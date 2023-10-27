@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turkish Call Center Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Turkish Call Center Form</h1>
+    </header>
+    <div class="container">
+        <form action="/submit" method="post">
+            <h2>Çağrı Yönetimi</h2>
+            <label>Açılış ve Karşılama: </label>
+            <input type="number" name="acilis_ve_karsilama" max="5"><br>
+
+            <label>Aktif Dinleme: </label>
+            <input type="number" name="aktif_dinleme" max="15"><br>
+
+            <!-- Add more fields as per your requirement here -->
+
+            <h2>Süreç Yönetimi</h2>
+            <label>Doğru Yönlendirme: </label>
+            <input type="number" name="dogru_yonlendirme" max="10"><br>
+
+            <label>Bilgi/Açıklama: </label>
+            <input type="number" name="bilgi_aciklama" max="10"><br>
+
+            <!-- Add more fields as per your requirement here -->
+
+            <h2>Çağrı Sonlandırma</h2>
+            <label>Uygun Kapanış: </label>
+            <input type="number" name="uygun_kapanis" max="5"><br>
+
+            <label>İlgi/Tavır: </label>
+            <input type="number" name="ilgi_tavir" max="5"><br>
+
+            <!-- Add more fields as per your requirement here -->
+
+            <button type="submit">Değerlendir</button>
+        </form>
+    </div>
+</body>
+</html>

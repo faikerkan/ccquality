@@ -1,0 +1,19 @@
+<h2>Your Evaluations</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Evaluator ID</th>
+            <th>Date</th>
+            <!-- Add other relevant columns -->
+        </tr>
+    </thead>
+    <tbody>
+        {% for eval in evaluations %}
+        <tr>
+            <td>{{ eval.degerlendiren_id }}</td>
+            <td>{{ eval.degerlendirme_tarihi }}</td>
+            <!-- Display other fields -->
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Değerlendirme Formu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+
+</head>
+<body>
+    <div class="container">
+        <h2>Değerlendirme Formu</h2>
+        <form action="{{ url_for('degerlendirme') }}" method="post">
+<label for="musteri_temsilcisi_id">Müşteri Temsilcisi</label>
+<select name="musteri_temsilcisi_id" id="musteri_temsilcisi_id">
+    {% for temsilci in musteri_temsilcileri %}
+        <option value="{{ temsilci.id }}">{{ temsilci.first_name }} {{ temsilci.last_name }}</option>
+    {% endfor %}
+</select>
+
+            <label for="degerlendiren_id">Değerlendiren ID:</label>
+            <input type="number" name="degerlendiren_id" required>
+
+            <label for="gsm">GSM:</label>
+            <input type="text" name="gsm" required>
+
+            <label for="cagri_tarihi">Çağrı Tarihi:</label>
+            <input type="date" name="cagri_tarihi" required>
+
+            <label for="degerlendirme_tarihi">Değerlendirme Tarihi:</label>
+            <input type="date" name="degerlendirme_tarihi" required>
+
+            <label for="aciklamalar">Açıklamalar:</label>
+            <textarea name="aciklamalar"></textarea>
+
+            <label for="acilis_ve_karsilama">Açılış ve Karşılama:</label>
+            <input type="number" name="acilis_ve_karsilama">
+
+            <label for="etkin_dinleme_ve_anlama">Etkin Dinleme ve Anlama:</label>
+            <input type="number" name="etkin_dinleme_ve_anlama">
+
+            <label for="analiz_ve_etkin_soru_sorma">Analiz ve Etkin Soru Sorma:</label>
+            <input type="number" name="analiz_ve_etkin_soru_sorma">
+
+            <label for="gorusme_kirliligi">Görüşme Kirliliği:</label>
+            <input type="number" name="gorusme_kirliligi">
+
+            <label for="ses_tonu">Ses Tonu:</label>
+            <input type="number" name="ses_tonu">
+
+            <label for="sorunun_sahiplenilmesi">Sorunun Sahiplenilmesi:</label>
+            <input type="number" name="sorunun_sahiplenilmesi">
+
+            <label for="empati">Empati:</label>
+            <input type="number" name="empati">
+
+            <label for="sure_ve_stres_yonetimi">Süre ve Stres Yönetimi:</label>
+            <input type="number" name="sure_ve_stres_yonetimi">
+
+            <label for="dogru_yonlendirme">Doğru Yönlendirme:</label>
+            <input type="number" name="dogru_yonlendirme">
+
+            <label for="bilgi_paylasimi_ve_ikna">Bilgi Paylaşımı ve İkna:</label>
+            <input type="number" name="bilgi_paylasimi_ve_ikna">
+
+            <label for="uygun_kapanis_anonsu">Uygun Kapanış Anonsu:</label>
+            <input type="number" name="uygun_kapanis_anonsu">
+
+            <label for="ilgili_ekiple_bilgi_verildi_mi">İlgili Ekiple Bilgi Verildi Mi?</label>
+            <input type="number" name="ilgili_ekiple_bilgi_verildi_mi">
+
+            <label for="cagri_tipi">Çağrı Tipi:</label>
+            <input type="text" name="cagri_tipi">
+
+            <!-- Checkbox'lar için -->
+            <label for="cagriyi_sonlandirdi">Çağrıyı Sonlandırdı:</label>
+            <input type="checkbox" name="cagriyi_sonlandirdi">
+
+            <label for="kayit_almadi">Kayıt Almadı:</label>
+            <input type="checkbox" name="kayit_almadi">
+
+            <label for="azarlama">Azarlama:</label>
+            <input type="checkbox" name="azarlama">
+
+            <label for="irtibat_numarasi">İrtibat Numarası:</label>
+            <input type="checkbox" name="irtibat_numarasi">
+
+            <label for="musteri_kapatti">Müşteri Kapattı:</label>
+            <input type="checkbox" name="musteri_kapatti">
+
+            <label for="kvkk_uyumu">KVKK Uyumu:</label>
+            <input type="checkbox" name="kvkk_uyumu">
+
+            <label for="ilgisiz_davranis">İlgisiz Davranış:</label>
+            <input type="checkbox" name="ilgisiz_davranis">
+
+            <label for="soz_kesme">Söz Kesme:</label>
+            <input type="checkbox" name="soz_kesme">
+
+            <label for="uygunsuz_karsilama">Uygunsuz Karşılama:</label>
+            <input type="checkbox" name="uygunsuz_karsilama">
+
+            <label for="farkli_ekran">Farklı Ekranla İlgilenme:</label>
+            <input type="checkbox" name="farkli_ekran">
+
+            <label for="yemek_sesleri">Yemek Sesleri:</label>
+            <input type="checkbox" name="yemek_sesleri">
+
+            <label for="kisisel_bilgi_paylasma">Kişisel Bilgi Paylaşma:</label>
+            <input type="checkbox" name="kisisel_bilgi_paylasma">
+
+            <label for="aykiri_bilgi">Aykırı Bilgi:</label>
+            <input type="checkbox" name="aykiri_bilgi">
+
+            <label for="cagri_puani">Çağrı Puanı:</label>
+            <input type="number" name="cagri_puani" required>
+
+            <input type="submit"
+                   value="Değerlendirmeyi Kaydet">
+        </form>
+    </div>
+</body>
+</html>
+
+
+

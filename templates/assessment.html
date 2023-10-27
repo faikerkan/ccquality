@@ -1,0 +1,17 @@
+<div class="dashboard-content">
+
+<form action="/assessment" method="post">
+    <label for="musteri_temsilcisi_id">Customer Representative ID:</label>
+    <input type="number" name="musteri_temsilcisi_id" required>
+
+    <label for="degerlendiren_id">Evaluator ID:</label>
+    <input type="number" name="degerlendiren_id" required>
+
+    <!-- Add other fields based on the columns in the Degerlendirme table -->
+
+    <input type="submit" value="Submit Evaluation">
+</form>
+
+<h2>Analysis Dashboard</h2>
+<p>Average Call Score: {{ average_score }}</p>
+</div>

@@ -1,0 +1,193 @@
+<!-- templates/evaluation.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-5 mb-4">Değerlendirme Formu</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <label for="representative">Müşteri Temsilcisi</label>
+            {{ form.representative(class="form-control") }}
+        </div>
+        <div class="form-group">
+            <label for="evaluation_date">Değerlendirme Tarihi</label>
+            {{ form.evaluation_date(class="form-control") }}
+        </div>
+        <div class="form-group">
+            <label for="call_queue">Çağrı Kuyruğu</label>
+            {{ form.call_queue(class="form-control") }}
+        </div>
+        <div class="form-group">
+            <label for="phone_number">Görüşme Yapılan Numara</label>
+            {{ form.phone_number(class="form-control") }}
+        </div>
+        <div class="form-group">
+            <label for="call_date">Çağrı Tarihi</label>
+            {{ form.call_date(class="form-control") }}
+        </div>
+        <!-- Puanlama Alanları -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Maksimum Puan</th>
+                    <th scope="col">Alınan Puan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>a) Açılış ve Karşılama</td>
+                    <td>5</td>
+                    <td>{{ form.opening_and_welcome(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>b) Etkin Dinleme ve Anlama</td>
+                    <td>15</td>
+                    <td>{{ form.effective_listening_and_understanding(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>c) Analiz ve Etkin Soru Sorma</td>
+                    <td>15</td>
+                    <td>{{ form.analysis_and_effective_questioning(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>d) Görüşme Kirliliği Yaratacak Söylem ve Sesler</td>
+                    <td>10</td>
+                    <td>{{ form.speech_and_sounds(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>e) Kendinden Emin, Canlı ve Nezaketli Ses Tonu</td>
+                    <td>10</td>
+                    <td>{{ form.confident_and_courteous_tone(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>f) Abonenin Sorununun Sahiplenilmesi</td>
+                    <td>5</td>
+                    <td>{{ form.problem_ownership(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>g) Empati</td>
+                    <td>5</td>
+                    <td>{{ form.empathy(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>h) Süre ve Stres Yönetimi</td>
+                    <td>5</td>
+                    <td>{{ form.time_and_stress_management(class="form-control") }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Maksimum Puan</th>
+                    <th scope="col">Alınan Puan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>a) Doğru Yönlendirme</td>
+                    <td>10</td>
+                    <td>{{ form.correct_routing(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>b) Bilgiyi Anlaşılır Biçimde Paylaşma, İkna Etme</td>
+                    <td>10</td>
+                    <td>{{ form.information_sharing_and_persuasion(class="form-control") }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Maksimum Puan</th>
+                    <th scope="col">Alınan Puan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>a) Uygun Kapanış Anonsu Verildi mi?</td>
+                    <td>5</td>
+                    <td>{{ form.proper_closing_announcement(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>b) İlgili/ Yönlendirilen Ekiple İlgili Bilgi Verildi mi?</td>
+                    <td>5</td>
+                    <td>{{ form.information_given_to_related_team(class="form-control") }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Çağrı Sonu Değerlendirme (Hatalar) -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Çağrı Sonu Değerlendirme (Hatalar)</th>
+                    <th scope="col">Hata Durumu Var/ Yok</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1) Sürece uygun olmayan şekilde çağrıyı sonlandırdı (Çağrı Puanı 0)</td>
+                    <td>{{ form.inappropriate_ending(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>2) Kayıt almadı, hatalı kayıt aldı (Çağrı Puanı 0)</td>
+                    <td>{{ form.no_or_incorrect_recording(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>3) Azarlama, kaba ve ukala konuşma, bağırma (Çağrı Puanı 0)</td>
+                    <td>{{ form.rude_or_aggressive_behavior(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>4) İrtibat numarası almama/ güncellememe (Çağrı Puanı 0)</td>
+                    <td>{{ form.no_contact_number_update(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>5) Müşteri kapattı ancak MT hattı açık bıraktı (Çağrı Puanı 0)</td>
+                    <td>{{ form.customer_hung_up_but_line_left_open(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>6) KVKK Uyum (Çağrı Puanı 0)</td>
+                    <td>{{ form.kvkk_compliance(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>7) İlgisiz ve duyarsız davranış (Çağrı Puanı -%50 Düşer)</td>
+                    <td>{{ form.indifferent_and_insensitive_behavior(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>8) Söz kesme, aynı anda konuşma (Çağrı Puanı -%50 Düşer)</td>
+                    <td>{{ form.interrupting_talking_simultaneously(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>9) Çağrıyı geç ya da uygunsuz karşılama (gülme, esneme vs) (Çağrı Puanı -%50 Düşer)</td>
+                    <td>{{ form.late_or_inappropriate_greeting(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>10) Görüşme esnasında farklı bir ekranla, içerikle ilgilenme (Çağrı Puanı -%50 Düşer)</td>
+                    <td>{{ form.distracted_during_call(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>11) Yemek, sakız vb. nedenlerle çağrıya yansıyan sesler (Çağrı Puanı -%50 Düşer)</td>
+                    <td>{{ form.noises_during_call(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>12) Kendi kişisel bilgilerini müşteri ile paylaşma (Çağrı Puanı -%50 Düşer)</td>
+                    <td>{{ form.sharing_personal_information(class="form-control") }}</td>
+                </tr>
+                <tr>
+                    <td>13) Şirket prosedür ve mevzuata aykırı bilgi paylaşma (Çağrı Puanı -%50 Düşer)</td>
+                    <td>{{ form.sharing_incorrect_information(class="form-control") }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="form-group">
+            <label for="comments">Açıklamalar</label>
+            {{ form.comments(class="form-control") }}
+        </div>
+        <button type="submit" class="btn btn-primary">Değerlendirmeyi Kaydet</button>
+    </form>
+</div>
+{% endblock %}
