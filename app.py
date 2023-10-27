@@ -12,7 +12,7 @@ from flask.cli import with_appcontext
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:1234@localhost/QMDB'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.secret_key = 'Er!css0n'
+app.secret_key = 'thesecretkey'
 
 db = SQLAlchemy(app)
 
