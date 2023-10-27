@@ -8,7 +8,6 @@ import click
 from werkzeug.security import generate_password_hash
 from flask.cli import with_appcontext
 
-# Flask uygulamasını ve SQLAlchemy objesini oluşturma
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:1234@localhost/QMDB'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -16,6 +15,8 @@ app.secret_key = 'thesecretkey'
 
 db = SQLAlchemy(app)
 
+
+#Müşteri temsilcilerinin, kalite değerlendiricilerinin ve adminlerin oluşturulduğu veritabanı modeli
 class User(db.Model):
     __tablename__ = 'users'  # Tablo adını belirtin
     ID = db.Column(db.Integer, primary_key=True)  # ID sütunu
@@ -31,6 +32,9 @@ class CallQueue(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(150), nullable=False)
 
+
+#Değerlendirme ekranındaki girişler için oluşturulmuş veritabanı modeli. Model içerisindeki kalite değerlendirme unsurları
+#ilgili operasyonun gereksinimleri için değiştirilebilir, puan ağırlıkları gereksinimlere göre değiştirilebilir.
 class Evaluations(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     representative = db.Column(db.String(100), nullable=False)
@@ -66,7 +70,7 @@ class Evaluations(db.Model):
     comments = db.Column(db.Text, nullable=True)
 
 
-
+#değerlendirme ektranının sınıf yapısı. Burada, veritabanına gönderilecek değerler ve aralıkları, varsayılan değerleri gelir.
 class EvaluationForm(FlaskForm):
     representative = SelectField('Müşteri Temsilcisi', coerce=int, validators=[DataRequired()])
     evaluation_date = DateField('Değerlendirme Tarihi', format='%Y-%m-%d', validators=[DataRequired()])
