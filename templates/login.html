@@ -1,28 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <title>Login</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Kalite Değerlendirme Programı - Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-form">
-            <h2>Login</h2>
-            <form action="/login" method="post">
-                <div>
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div>
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <div>
-                    <input type="submit" value="Login">
-                </div>
-            </form>
-            <p>Don't have an account? <a href="/register">Register</a></p>
-        </div>
+
+<div class="p-5 bg-success text-white text-center">
+  <h1>Çağrı Merkezi Şefliği</h1>
+  <p>Kalite Değerlendirme Yazılımı</p> 
+</div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <!-- Burada menü öğeleriniz olabilir -->
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-3">
+  <h2>Kullanıcı Girişi</h2>
+  <form method="post">  <!-- Formun action özelliğini kaldırdık ve methodunu POST olarak güncelledik -->
+    {% csrf_token %}  <!-- CSRF token ekledik -->
+    {{ form.as_p }}  <!-- Django formunu paragraf (<p>) olarak render ettik -->
+    <div class="form-check mb-3">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="remember"> Beni Hatırla
+      </label>
     </div>
+    <button type="submit" class="btn btn-primary">Giriş</button>
+  </form>
+</div>
+
 </body>
 </html>
